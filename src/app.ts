@@ -1,5 +1,6 @@
 import express from "express";
 import templateEngine from "express-handlebars";
+import path from "path";
 
 import basicRouters from "./routers/index"
 import projectRouters from "./routers/projects"
@@ -12,6 +13,10 @@ const app: express.Application = express();
 //View Engine - Handlebars : https://handlebarsjs.com/
 app.engine('.hbs', templateEngine({ extname: '.hbs' }));
 app.set('view engine', '.hbs');
+
+//Allow access to static files, s stands for statics
+const staticsPath = path.join(__dirname, '..', 'statics');
+app.use("/s", express.static(staticsPath));
 
 //Routes
 app.get('/', function (req, res) {
