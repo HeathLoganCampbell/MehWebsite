@@ -2,6 +2,7 @@ import express from "express";
 import templateEngine from "express-handlebars";
 
 import basicRouters from "./routers/index"
+import projectRouters from "./routers/projects"
 
 const port = process.env.PORT || 3000;
 
@@ -17,6 +18,7 @@ app.get('/', function (req, res) {
     res.render('index', { layout: "main" });
 });
 
+app.use("/projects", projectRouters);
 app.use("/api/v1", basicRouters);
 
 app.listen(port, () => {
