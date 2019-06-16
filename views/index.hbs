@@ -12,3 +12,44 @@
         
     </div>
 </header>
+<br/>
+<br/>
+<br/>
+<center>
+    <canvas width="264" height="192"></canvas>
+</center>
+
+<script>
+    let img = new Image();
+    img.src = 's/images/hut.png';
+    img.onload = function() {
+        init();
+    };
+
+    let canvas = document.querySelector('canvas');
+    let ctx = canvas.getContext('2d');
+    var position = 0;
+
+    ctx.mozImageSmoothingEnabled    = false;
+    ctx.oImageSmoothingEnabled      = false;
+    ctx.webkitImageSmoothingEnabled = false;
+    ctx.msImageSmoothingEnabled     = false;
+    ctx.imageSmoothingEnabled       = false;
+
+    const hutWidth = 66;
+    const hutHeight = 48;
+
+    const scale = 4;
+
+    function init() {
+        ctx.drawImage(img, 0, 0, hutWidth, hutHeight, 0, 0, hutWidth * scale, hutHeight * scale);
+    }
+
+    setInterval(() => 
+    {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        ctx.drawImage(img, 0, hutHeight * position, hutWidth, hutHeight, 0, 0, hutWidth * scale, hutHeight * scale);
+        position = (position + 1) % 32; 
+    }, 100)
+</script>
+

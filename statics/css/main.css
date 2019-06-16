@@ -16,3 +16,9 @@ h1
     margin-top: 50px;
     text-align: center;
 }
+.flipbook
+{
+    overflow: hidden;
+    width: 48px;
+    height: 44px;
+}
